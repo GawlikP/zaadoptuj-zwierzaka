@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dogs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Birth date</th>
+      <th>Breed</th>
+      <th>Description</th>
+      <th>Gender</th>
+      <th>Vaccination</th>
+      <th>Size</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>Apartment size</th>
+      <th>Childrens</th>
+      <th>Time to spent</th>
+      <th>Owner with dogs</th>
+      <th>Animals</th>
+      <th>Noise</th>
+      <th>Energy</th>
+      <th>Disposition</th>
+      <th>Localization</th>
+      <th>Coat</th>
+      <th>Drooling</th>
+      <th>Obedience</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dogs.each do |dog| %>
+      <tr>
+        <td><%= dog.name %></td>
+        <td><%= dog.birth_date %></td>
+        <td><%= dog.breed %></td>
+        <td><%= dog.description %></td>
+        <td><%= dog.gender %></td>
+        <td><%= dog.vaccination %></td>
+        <td><%= dog.size %></td>
+        <td><%= dog.weight %></td>
+        <td><%= dog.height %></td>
+        <td><%= dog.apartment_size %></td>
+        <td><%= dog.childrens %></td>
+        <td><%= dog.time_to_spent %></td>
+        <td><%= dog.owner_with_dogs %></td>
+        <td><%= dog.animals %></td>
+        <td><%= dog.noise %></td>
+        <td><%= dog.energy %></td>
+        <td><%= dog.disposition %></td>
+        <td><%= dog.localization %></td>
+        <td><%= dog.coat %></td>
+        <td><%= dog.drooling %></td>
+        <td><%= dog.obedience %></td>
+        <td><%= dog.user_id %></td>
+        <td><%= link_to 'Show', dog %></td>
+        <td><%= link_to 'Edit', edit_dog_path(dog) %></td>
+        <td><%= link_to 'Destroy', dog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dog', new_dog_path %>

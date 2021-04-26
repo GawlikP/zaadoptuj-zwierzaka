@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_25_124821) do
+ActiveRecord::Schema.define(version: 2021_04_26_081529) do
+
+  create_table "dogs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "birth_date"
+    t.string "breed"
+    t.text "description"
+    t.boolean "gender"
+    t.integer "vaccination"
+    t.integer "size"
+    t.decimal "weight"
+    t.decimal "height"
+    t.integer "apartment_size"
+    t.integer "childrens"
+    t.integer "time_to_spent"
+    t.integer "owner_with_dogs"
+    t.integer "animals"
+    t.integer "noise"
+    t.integer "energy"
+    t.integer "disposition"
+    t.text "localization"
+    t.integer "coat"
+    t.integer "drooling"
+    t.integer "obedience"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_dogs_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -21,4 +49,5 @@ ActiveRecord::Schema.define(version: 2021_04_25_124821) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "dogs", "users"
 end

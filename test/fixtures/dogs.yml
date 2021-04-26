@@ -1,0 +1,49 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  birth_date: 2021-04-26 10:15:29
+  breed: MyString
+  description: MyText
+  gender: false
+  vaccination: 1
+  size: 1
+  weight: 9.99
+  height: 9.99
+  apartment_size: 
+  childrens: 1
+  time_to_spent: 1
+  owner_with_dogs: 1
+  animals: 1
+  noise: 1
+  energy: 1
+  disposition: 1
+  localization: MyText
+  coat: 1
+  drooling: 1
+  obedience: 1
+  user: one
+
+two:
+  name: MyString
+  birth_date: 2021-04-26 10:15:29
+  breed: MyString
+  description: MyText
+  gender: false
+  vaccination: 1
+  size: 1
+  weight: 9.99
+  height: 9.99
+  apartment_size: 
+  childrens: 1
+  time_to_spent: 1
+  owner_with_dogs: 1
+  animals: 1
+  noise: 1
+  energy: 1
+  disposition: 1
+  localization: MyText
+  coat: 1
+  drooling: 1
+  obedience: 1
+  user: two

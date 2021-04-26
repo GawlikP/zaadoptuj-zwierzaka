@@ -1,0 +1,127 @@
+<%= form_with(model: dog) do |form| %>
+  <% if dog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dog.errors.count, "error") %> prohibited this dog from being saved:</h2>
+
+      <ul>
+        <% dog.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :birth_date %>
+    <%= form.datetime_select :birth_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :breed %>
+    <%= form.text_field :breed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.check_box :gender %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vaccination %>
+    <%= form.number_field :vaccination %>
+  </div>
+
+  <div class="field">
+    <%= form.label :size %>
+    <%= form.number_field :size %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.text_field :weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :height %>
+    <%= form.text_field :height %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apartment_size %>
+    <%= form.text_field :apartment_size %>
+  </div>
+
+  <div class="field">
+    <%= form.label :childrens %>
+    <%= form.number_field :childrens %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_to_spent %>
+    <%= form.number_field :time_to_spent %>
+  </div>
+
+  <div class="field">
+    <%= form.label :owner_with_dogs %>
+    <%= form.number_field :owner_with_dogs %>
+  </div>
+
+  <div class="field">
+    <%= form.label :animals %>
+    <%= form.number_field :animals %>
+  </div>
+
+  <div class="field">
+    <%= form.label :noise %>
+    <%= form.number_field :noise %>
+  </div>
+
+  <div class="field">
+    <%= form.label :energy %>
+    <%= form.number_field :energy %>
+  </div>
+
+  <div class="field">
+    <%= form.label :disposition %>
+    <%= form.number_field :disposition %>
+  </div>
+
+  <div class="field">
+    <%= form.label :localization %>
+    <%= form.text_area :localization %>
+  </div>
+
+  <div class="field">
+    <%= form.label :coat %>
+    <%= form.number_field :coat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :drooling %>
+    <%= form.number_field :drooling %>
+  </div>
+
+  <div class="field">
+    <%= form.label :obedience %>
+    <%= form.number_field :obedience %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
