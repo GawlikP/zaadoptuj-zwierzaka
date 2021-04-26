@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  dog: one
+  question: MyText
+  hiden: false
+  blocked: false
+  reported: false
+
+two:
+  user: two
+  dog: two
+  question: MyText
+  hiden: false
+  blocked: false
+  reported: false

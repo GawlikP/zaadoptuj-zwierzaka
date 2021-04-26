@@ -1,0 +1,47 @@
+<%= form_with(model: question) do |form| %>
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+        <% question.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dog_id %>
+    <%= form.text_field :dog_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :question %>
+    <%= form.text_area :question %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hiden %>
+    <%= form.check_box :hiden %>
+  </div>
+
+  <div class="field">
+    <%= form.label :blocked %>
+    <%= form.check_box :blocked %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reported %>
+    <%= form.check_box :reported %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
