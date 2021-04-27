@@ -1,4 +1,75 @@
 
 <% provide(:title, 'Sign up') %>
-    <h1> HELLO! </h1>
-<button class="btn btn-success"> XDDDD </button>
+<div class="container-fluid h-100 d-flex flex-column">
+  <div class="row h-100 ">
+    <div class="col-sm-6 h-100" >
+      <div class="glowny"><bold>Znajdźmy im dom</bold></div>
+      <div class="dodatkowy"><bold>Zaadoptuj zwierzaka,</bold></div>
+      <div class="dodatkowy2"><bold>dołącz do naszej społeczności</bold></div>
+      <div class="przycisk d-inline-block""><%= link_to "Zarejestruj się", users_new_path, class: "nav-button" %></div>
+      <div class="dodatkowy3 d-inline-block">Posiadasz już konto?<br></div>
+      <div class="logowanie"><%= link_to "Zaloguj się", login_path, class: "nav-link" %></div>
+    </div>
+    <div class="col-sm-6" >
+      <div class="row h-100">
+
+          <img src="/images/psy.png" alt="psy" width="900" height="900">
+
+          </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<style>
+div.glowny{
+  text-align: center;
+  margin-top: 35%;
+  font-size: 600%;
+
+}
+div.dodatkowy{
+  margin-left: 17%;
+  margin-top : 5%;
+  font-size: 300%;
+  color: #2C824C;
+}
+div.dodatkowy2{
+  margin-left: 17%;
+  font-size: 300%;
+  color: #2C824C;
+}
+div.dodatkowy3{
+  margin-left: 20%;
+  font-size: 150%;
+}
+div.przycisk{
+  margin-top: 5%;
+  margin-left: 17%;
+
+}
+a.nav-button{
+  border:none;
+  color: white;
+  text-align: center;
+  background-color: #2F8B57;
+  border-radius: 45px;
+  padding: 8px 16px;
+  border :solid #2F8B57;
+  font-size: 150%;
+
+}
+
+a.nav-button:hover{
+  background-color: white;
+  color : black;
+  border :solid #2F8B57;
+}
+div.logowanie{
+  margin-left: 56%;
+  font-size: 110%;
+  font-size: 120%;
+}
+
+
+</style>
