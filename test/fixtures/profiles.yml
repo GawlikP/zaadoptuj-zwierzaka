@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  apartment: 1
+  garden: 1
+  age: 1
+  animal_experience: 1
+  time_to_spent: 1
+  finance: 1
+  description: MyText
+
+two:
+  user: two
+  apartment: 1
+  garden: 1
+  age: 1
+  animal_experience: 1
+  time_to_spent: 1
+  finance: 1
+  description: MyText
