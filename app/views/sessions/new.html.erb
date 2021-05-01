@@ -6,9 +6,9 @@
     <hr>
     <br>
       <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
-       <%= f.email_field :email, class: 'fadeIn second',id:'pole', placeholder: 'Email lub login' %>
+       <%= f.email_field :email, class: 'fadeIn second',id:'pole', placeholder: 'Email lub login',required:true %>
        <br><br><br>
-       <%= f.password_field :password, class: 'fadeIn third',id:'pole', placeholder: 'Hasło' %>
+       <%= f.password_field :password, class: 'fadeIn third',id:'pole', placeholder: 'Hasło',required:true %>
        <br><br><br>
        <%= f.submit "Zaloguj się", class: "fadeIn fourth"%>
       <% end %>
