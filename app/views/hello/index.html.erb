@@ -8,7 +8,8 @@
       <div class="dodatkowy2"><bold>dołącz do naszej społeczności</bold></div>
       <div class="przycisk d-inline-block""><%= link_to "Zarejestruj się", users_new_path, class: "nav-button" %></div>
       <div class="dodatkowy3 d-inline-block">Posiadasz już konto?<br></div>
-      <div class="logowanie"><%= link_to "Zaloguj się", login_path, class: "nav-link" %></div>
+      <div class="logowanie"><%= link_to "Zaloguj się", login_path, class:'podkreslenie'%></div>
+
     </div>
     <div class="col-sm-6" >
       <div class="row h-100">
@@ -22,11 +23,12 @@
 
 </div>
 <style>
+
 div.glowny{
   text-align: center;
   margin-top: 35%;
   font-size: 600%;
-
+  font-family: Calibri;
 }
 div.dodatkowy{
   margin-left: 17%;
@@ -40,7 +42,7 @@ div.dodatkowy2{
   color: #2C824C;
 }
 div.dodatkowy3{
-  margin-left: 20%;
+  margin-left: 2%;
   font-size: 150%;
 }
 div.przycisk{
@@ -54,9 +56,13 @@ a.nav-button{
   text-align: center;
   background-color: #2F8B57;
   border-radius: 45px;
-  padding: 8px 16px;
+  padding: 15px 80px;
   border :solid #2F8B57;
   font-size: 150%;
+  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  margin: 5px 20px 40px 20px;
+
 
 }
 
@@ -65,11 +71,29 @@ a.nav-button:hover{
   color : black;
   border :solid #2F8B57;
 }
+
 div.logowanie{
-  margin-left: 56%;
+  margin-left: 58%;
   font-size: 110%;
   font-size: 120%;
 }
+.podkreslenie:after {
+  display: block;
+  left: 0;
+  bottom: -10px;
+  width: 0;
+  height: 2px;
+  background-color: #2F8B57;
+  content: "";
+  transition: width 0.2s;
+}
 
+.podkreslenie:hover {
+  color: #0d0d0d;
+}
+
+.podkreslenie:hover:after{
+  width: 22%;
+}
 
 </style>

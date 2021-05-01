@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_081834) do
+ActiveRecord::Schema.define(version: 2021_04_26_085226) do
 
   create_table "dogs", force: :cascade do |t|
     t.string "name"
@@ -40,6 +40,20 @@ ActiveRecord::Schema.define(version: 2021_04_26_081834) do
     t.index ["user_id"], name: "index_dogs_on_user_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "apartment"
+    t.integer "garden"
+    t.integer "age"
+    t.integer "animal_experience"
+    t.integer "time_to_spent"
+    t.integer "finance"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "dog_id", null: false
@@ -63,6 +77,7 @@ ActiveRecord::Schema.define(version: 2021_04_26_081834) do
   end
 
   add_foreign_key "dogs", "users"
+  add_foreign_key "profiles", "users"
   add_foreign_key "questions", "dogs"
   add_foreign_key "questions", "users"
 end
