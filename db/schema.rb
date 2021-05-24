@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_24_110438) do
+ActiveRecord::Schema.define(version: 2021_05_24_153544) do
 
   create_table "dogs", force: :cascade do |t|
     t.string "name"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_110438) do
     t.boolean "reported"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "answer"
     t.index ["dog_id"], name: "index_questions_on_dog_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end

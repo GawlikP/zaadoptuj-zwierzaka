@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/main', to: 'hello#main'
   get '/myprofile', to:'hello#profile'
   get '/adddog', to: 'hello#adddog'
+  put '/addanswer', to: 'hello#addanswer'
   #get '/signup', to: 'users#new'
   #post '/signup', to: 'user#create'
   get '/login', to: 'sessions#new'

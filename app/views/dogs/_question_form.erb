@@ -1,24 +1,24 @@
 <%= form_for @question do |form| %>
-  <% if question.errors.any? %>
+  <% if @errors %>
+  <% if @errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+      <h2><%= pluralize(@errors.count, "error") %> prohibited this question from being saved:</h2>
 
       <ul>
-        <% question.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% @errors.each do |error| %>
+          <li><%= error %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+<% end %>
 
   <div class="field" hidden>
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.hidden_field :user_id %>
   </div>
 
   <div class="field" hidden>
-    <%= form.label :dog_id %>
-    <%= form.text_field :dog_id %>
+    <%= form.hidden_field :dog_id %>
   </div>
 
 

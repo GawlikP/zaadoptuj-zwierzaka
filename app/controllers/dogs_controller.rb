@@ -11,8 +11,10 @@ class DogsController < ApplicationController
   def show
     @questions = Question.where(dog_id: params[:id])
     @question = Question.new
+    
     if session[:question_errors]
-      @question.errors = session[:question_errors]
+      @errors = session[:question_errors]
+      session[:question_errors] = []
     end
     @question.dog_id = params[:id]
     @question.user_id = current_user.id

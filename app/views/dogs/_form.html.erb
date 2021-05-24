@@ -116,9 +116,8 @@
     <%= form.number_field :obedience %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+  <div class="field" hidden>
+    <%= hidden_field_tag :user_id %>
   </div>
 
   <div class="actions">

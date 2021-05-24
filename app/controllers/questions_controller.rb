@@ -40,7 +40,7 @@ class QuestionsController < ApplicationController
       redirect_to dog_path(@question.dog_id)
     else
       session[:question_errors] = @question.errors
-      redirect_to :back
+      redirect_to main_path
     end
   end
 

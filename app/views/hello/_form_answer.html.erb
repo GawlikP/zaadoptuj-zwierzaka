@@ -1,0 +1,12 @@
+<%= form_for @question, url: addanswer_path(@question), method: :put, html: {class: "form-group"} do |form| %>
+
+<div class="form-group">
+  <%= form.label :answer, class: 'form-label' %>
+
+  <%= form.text_field :answer, class: 'form-control' %>
+  <%= hidden_field_tag :id, id %>
+
+  <%= form.submit  'Send Answer' %>
+</div>
+
+<% end %>

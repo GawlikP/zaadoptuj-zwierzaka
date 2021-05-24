@@ -24,12 +24,12 @@
 
 <p>
   <strong>Gender:</strong>
-  <%= @dog.gender %>
+  <%= humanize_gender @dog.gender %>
 </p>
 
 <p>
   <strong>Vaccination:</strong>
-  <%= @dog.vaccination %>
+  <%=  @dog.vaccination %>
 </p>
 
 <p>
@@ -109,17 +109,29 @@
 
 <p>
   <strong>User:</strong>
-  <%= current_user.name %>
+  <%= @dog.user.name %>
 </p>
 
-<% @questions.each do |question, i| %>
-<div class="card">
-  <h5 class="card-title"><%= question.user.name %></h5>
-  <div class="card-text"><%= question.question %></div>
-</div>
+<% if current_user.id == @dog.user.id %>
+  <%= link_to 'Edytuj', edit_dog_path(@dog), class:'btn btn-success' %>
 <% end %>
 
-<%= render 'question_form', question: @question %>
+<% @questions.each do |question, i| %>
+<% if current_user.id == @dog.user.id || question.hiden == false %>
+<div class="card">
+  <h5 class="card-title">Pytający:<%= question.user.name %></h5>
+  <div class="card-text"><p>Pytanie:<%= question.question %></p></div>
+  <div class="card-text"><p>Odpowiedz:<%= question.answer %> </p></div>
+</div>
+<% if current_user.id == @dog.user.id %>
+
+  <%= render 'hello/form_answer', question: question, id: question.id %>
+
+<%end %>
+<% end %>
+<% end %>
+
+<%= render 'question_form', question: @question, d_id: @dog.id, u_id: current_user.id %>
 
 <%= link_to 'Edit', edit_dog_path(@dog) %> |
 <%= link_to 'Back', dogs_path %>

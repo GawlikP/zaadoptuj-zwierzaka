@@ -19,7 +19,20 @@ class HelloController < ApplicationController
     end
     def adddog
       @dog = Dog.new
-      
+
+    end
+    def addanswer
+      params.each do |key, value|
+        Rails.logger.warn "Param #{key}: #{value}"
+      end
+      question = Question.find(params[:id])
+
+      question.answer = params[:question][:answer]
+      question.hiden = false
+      Rails.logger.warn "Question #{question.answer}"
+      if question.save
+        redirect_to dog_path(question.dog_id)
+      end
     end
 
     private
