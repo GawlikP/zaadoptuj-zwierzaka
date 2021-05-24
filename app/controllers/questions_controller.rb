@@ -34,6 +34,16 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def create
+    @question = Question.new(question_params)
+    if @question.save
+      redirect_to dog_path(@question.dog_id)
+    else
+      session[:question_errors] = @question.errors
+      redirect_to :back
+    end
+  end
+
   # PATCH/PUT /questions/1 or /questions/1.json
   def update
     respond_to do |format|

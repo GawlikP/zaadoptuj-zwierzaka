@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[ show edit update destroy ]
-
+  include SessionsHelper
   # GET /profiles or /profiles.json
   def index
     @profiles = Profile.all
@@ -17,6 +17,10 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+    @profile = Profile.where(:user_id => params[:id]).first
+    if current_user.id != @profile.user_id
+      render :access_denied, status: :ok, location: @profile
+    end
   end
 
   # POST /profiles or /profiles.json
@@ -36,14 +40,14 @@ class ProfilesController < ApplicationController
 
   # PATCH/PUT /profiles/1 or /profiles/1.json
   def update
-    respond_to do |format|
-      if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: "Profile was successfully updated." }
-        format.json { render :show, status: :ok, location: @profile }
+  if @profile.update(profile_params)
+    if @profile.user_id == current_user.id
+      redirect_to myprofile_path
+      return
+    end
+        redirect_to @profile, notice: "Profile was successfully updated."
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
-      end
+        render :edit, status: :unprocessable_entity
     end
   end
 

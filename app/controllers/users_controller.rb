@@ -11,7 +11,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user
+      @profile = Profile.new(user_id: @user.id )
+      @profile.save
+      redirect_to :controller => 'hello', :action => 'main'
     else
       render 'new'
     end

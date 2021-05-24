@@ -1,6 +1,7 @@
 class DogsController < ApplicationController
   before_action :set_dog, only: %i[ show edit update destroy ]
-
+  include SessionsHelper
+  before_action :kick
   # GET /dogs or /dogs.json
   def index
     @dogs = Dog.all
@@ -8,6 +9,13 @@ class DogsController < ApplicationController
 
   # GET /dogs/1 or /dogs/1.json
   def show
+    @questions = Question.where(dog_id: params[:id])
+    @question = Question.new
+    if session[:question_errors]
+      @question.errors = session[:question_errors]
+    end
+    @question.dog_id = params[:id]
+    @question.user_id = current_user.id
   end
 
   # GET /dogs/new
@@ -65,5 +73,8 @@ class DogsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def dog_params
       params.require(:dog).permit(:name, :birth_date, :breed, :description, :gender, :vaccination, :size, :weight, :height, :apartment_size, :childrens, :time_to_spent, :owner_with_dogs, :animals, :noise, :energy, :disposition, :localization, :coat, :drooling, :obedience, :user_id)
+    end
+    def kick
+      kick_out
     end
 end

@@ -1,3 +1,5 @@
+<%= render :partial=> "hello/header" %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -107,8 +109,17 @@
 
 <p>
   <strong>User:</strong>
-  <%= @dog.user_id %>
+  <%= current_user.name %>
 </p>
+
+<% @questions.each do |question, i| %>
+<div class="card">
+  <h5 class="card-title"><%= question.user.name %></h5>
+  <div class="card-text"><%= question.question %></div>
+</div>
+<% end %>
+
+<%= render 'question_form', question: @question %>
 
 <%= link_to 'Edit', edit_dog_path(@dog) %> |
 <%= link_to 'Back', dogs_path %>
