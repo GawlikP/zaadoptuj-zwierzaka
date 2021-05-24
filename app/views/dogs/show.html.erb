@@ -1,127 +1,165 @@
 <%= render :partial=> "hello/header" %>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <p id="notice"><%= notice %></p>
+<div class="container-fluid" style="margin-top:30px;" >
+  <div class="row">
 
-<p>
-  <strong>Name:</strong>
-  <%= @dog.name %>
-</p>
 
-<p>
-  <strong>Birth date:</strong>
-  <%= @dog.birth_date %>
-</p>
 
-<p>
-  <strong>Breed:</strong>
-  <%= @dog.breed %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @dog.description %>
-</p>
+    <div class="col-sm-6">
+<%= @dog.name %>
+    </div>
 
-<p>
-  <strong>Gender:</strong>
-  <%= humanize_gender @dog.gender %>
-</p>
+    <div class="col-sm-3">
+      <table class="table" style="color:#fff;background:#4f3222">
+    <thead>
+      <tr>
 
-<p>
-  <strong>Vaccination:</strong>
-  <%=  @dog.vaccination %>
-</p>
+      </tr>
+    </thead>
+    <tbody>
 
-<p>
-  <strong>Size:</strong>
-  <%= @dog.size %>
-</p>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Wiek:</strong></td>
+        <td><%= humanize (Time.now -  @dog.birth_date )%></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Rasa:</strong></td>
+        <td><%= @dog.breed %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Płeć:</strong></td>
+        <td><%= humanize_gender @dog.gender %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Szczepienia:</strong></td>
+        <td><%= humanize_vaccination @dog.vaccination %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Wielkość:</strong></td>
+        <td><%= humanize_size @dog.size %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Waga:</strong></td>
+        <td><%= @dog.weight %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Wysokość:</strong></td>
+        <td><%= @dog.height %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Potrzebna przestrzeń:</strong></td>
+        <td><%= humanize_apartment_size @dog.apartment_size %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Kontakt z dziećmi:</strong></td>
+        <td><%= humanize_childerns @dog.childrens %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Ile czasu może zostać sam:</strong></td>
+        <td><%= humanize_time_to_spent @dog.time_to_spent %></td>
+      </tr>
 
-<p>
-  <strong>Weight:</strong>
-  <%= @dog.weight %>
-</p>
+            <tr>
 
-<p>
-  <strong>Height:</strong>
-  <%= @dog.height %>
-</p>
+              <td><i class="fa fa-paw"></i><strong> Wymagane doświadczenie właściciela:</strong></td>
+              <td><%= humanize_owner_with_dogs @dog.owner_with_dogs %></td>
+            </tr>
+    </tbody>
+  </table>
+    </div>
 
-<p>
-  <strong>Apartment size:</strong>
-  <%= @dog.apartment_size %>
-</p>
 
-<p>
-  <strong>Childrens:</strong>
-  <%= @dog.childrens %>
-</p>
+    <div class="col-sm-3">
+      <table class="table" style="color:#fff;background:#405d27">
+    <thead>
+      <tr>
 
-<p>
-  <strong>Time to spent:</strong>
-  <%= @dog.time_to_spent %>
-</p>
+      </tr>
+    </thead>
+    <tbody>
 
-<p>
-  <strong>Owner with dogs:</strong>
-  <%= @dog.owner_with_dogs %>
-</p>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Zachowanie wobec innych zwierząt:</strong></td>
+        <td><%= humanize_animals @dog.animals %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Głośność:</strong></td>
+        <td><%= humanize_noise @dog.noise %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Energiczność:</strong></td>
+        <td><%= humanize_energy @dog.energy %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Usposobienie:</strong></td>
+        <td><%= humanize_dispoition @dog.disposition %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Lokalizacja:</strong></td>
+        <td><%= @dog.localization %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Sierść:</strong></td>
+        <td><%= humanize_coat @dog.coat %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Ślinienie:</strong></td>
+        <td><%= humanize_drooling @dog.drooling %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Wychowanie:</strong></td>
+        <td><%= humanize_obedience @dog.obedience %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-paw"><strong> Właściciel:</strong></td>
+        <td><%= @dog.user.name %></td>
+      </tr>
+    </tbody>
+  </table>
+  <% if current_user.id == @dog.user.id %>
+    <%= link_to 'Edytuj profil puplia', edit_dog_path(@dog), class:'btn btn-dark btn-lg' %>
+  <% end %>
 
-<p>
-  <strong>Animals:</strong>
-  <%= @dog.animals %>
-</p>
 
-<p>
-  <strong>Noise:</strong>
-  <%= @dog.noise %>
-</p>
+    </div>
+    <div class="row">
 
-<p>
-  <strong>Energy:</strong>
-  <%= @dog.energy %>
-</p>
+        <div class="card" style="margin: 25px 100px 25px 100px;">
+      <h4 class="card-title"> Opis: </h4>
+    <div class="card-body "><p> <%= @dog.description %></p></div>
+  </div>
+  </div>
+</div>
 
-<p>
-  <strong>Disposition:</strong>
-  <%= @dog.disposition %>
-</p>
+<style>
+strong{ font-family: 'Pattaya', sans-serif;
+font-size: 20px;}
+table{
 
-<p>
-  <strong>Localization:</strong>
-  <%= @dog.localization %>
-</p>
+    border-radius: 10px;
+    -moz-border-radius: 5px;
 
-<p>
-  <strong>Coat:</strong>
-  <%= @dog.coat %>
-</p>
+}
 
-<p>
-  <strong>Drooling:</strong>
-  <%= @dog.drooling %>
-</p>
+</style>
 
-<p>
-  <strong>Obedience:</strong>
-  <%= @dog.obedience %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @dog.user.name %>
-</p>
-
-<% if current_user.id == @dog.user.id %>
-  <%= link_to 'Edytuj', edit_dog_path(@dog), class:'btn btn-success' %>
-<% end %>
 
 <% @questions.each do |question, i| %>
 <% if current_user.id == @dog.user.id || question.hiden == false %>
 <div class="card">
-  <h5 class="card-title">Pytający:<%= question.user.name %></h5>
-  <div class="card-text"><p>Pytanie:<%= question.question %></p></div>
-  <div class="card-text"><p>Odpowiedz:<%= question.answer %> </p></div>
+  <h5 class="card-title">Pytanie od: <%= question.user.name %></h5>
+  <div class="card-text"><p>Pytanie: <b><%= question.question %></b></p></div>
+  <br>
+  <div class="card-text"><p>Odpowiedź właściciela: <b> <%= question.answer %></b> </p>
+  </div>
+  <br>
 </div>
 <% if current_user.id == @dog.user.id %>
 

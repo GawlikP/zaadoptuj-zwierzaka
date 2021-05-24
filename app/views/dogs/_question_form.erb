@@ -23,12 +23,13 @@
 
 
   <div class="form-group">
-    <%= form.label :question, class: "form-label"%>
+    <%= form.label :Nowe_pytanie, class: "form-label"%>
     <%= form.text_area :question, class: "form-control" %>
   </div>
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Zadaj pytanie', class: "btn btn-dark" %>
   </div>
+  <br>
 <% end %>

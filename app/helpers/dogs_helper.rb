@@ -22,9 +22,9 @@ module DogsHelper
   def humanize_gender value
     case value
     when true
-      'SAMIEC'
+      'samiec'
     when false
-      'SAMICA'
+      'samica'
     end
   end
 
