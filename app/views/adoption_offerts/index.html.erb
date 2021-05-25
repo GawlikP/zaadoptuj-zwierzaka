@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Adoption Offerts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Readed</th>
+      <th>Context</th>
+      <th>Receiver</th>
+      <th>Sender</th>
+      <th>Aproved</th>
+      <th>Answer</th>
+      <th>Dog</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @adoption_offerts.each do |adoption_offert| %>
+      <tr>
+        <td><%= adoption_offert.readed %></td>
+        <td><%= adoption_offert.context %></td>
+        <td><%= adoption_offert.receiver.name %></td>
+        <td><%= adoption_offert.sender.name %></td>
+        <td><%= adoption_offert.aproved %></td>
+        <td><%= adoption_offert.answer %></td>
+        <td><%= adoption_offert.dog.name %> </td>
+        <td><%= link_to 'Show', adoption_offert %></td>
+        <td><%= link_to 'Edit', edit_adoption_offert_path(adoption_offert) %></td>
+        <td><%= link_to 'Destroy', adoption_offert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Adoption Offert', new_adoption_offert_path %>

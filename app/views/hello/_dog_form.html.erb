@@ -1,11 +1,11 @@
 <%= form_with(model: dog) do |form| %>
-  <% if dog.errors.any? %>
+  <% if errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(dog.errors.count, "error") %> prohibited this dog from being saved:</h2>
+      <h2><%= pluralize(errors.count, "error") %> prohibited this dog from being saved:</h2>
 
       <ul>
-        <% dog.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% errors.each do |error| %>
+          <li><%= error %></li>
         <% end %>
       </ul>
     </div>
@@ -77,7 +77,7 @@
 
   <div class="field">
     <%= form.label :owner_with_dogs %>
-    <%= form.select :owner_with_dogs, options_for_select([['Właściciel nie miewa kontaku z psami', '1'], ['Właściciel ma stałe kontakty z psami', '2'], ['W rodzinie kiedyś był pies', '3'], ['Posiadał psa w przeszłości', '4'], ['Właściciel ma/miał wiele psów i ma dobre z nimi doświadczenie', '5'], class: 'form-control']), :owner_with_dogs => form.object.owner_with_dogs %>
+    <%= form.select :owner_with_dogs, options_for_select([['Właściciel nie miewa kontaku z psami', '1'], ['Właściciel ma stałe kontakty z psami', '2'], ['W rodzinie kiedyś był pies', '3'], ['Posiadał psa w przeszłości', '4'], ['Właściciel ma/miał wiele psów i ma dobre z nimi doświadczenie', '5']]), {:owner_with_dogs => form.object.owner_with_dogs}, {class: 'form-control'} %>
 
   </div>
 
@@ -129,9 +129,8 @@
 
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+  <div class="field" hidden>
+    <%= form.hidden_field :user_id %>
   </div>
 
   <div class="actions">

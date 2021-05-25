@@ -1,0 +1,31 @@
+<%= form_for @adoption_offert, url: addadoption_path(@adoption), method: :post, html: {class: "form-group"} do |form| %>
+
+  <h3><b> Zgłoś Chęć adopcji zwierzaka </b></h3>
+
+<% if adoption_offert.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(adoption_offert.errors.count, "error") %> prohibited this adoption_offert from being saved:</h2>
+
+    <ul>
+      <% adoption_offert.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="form-group">
+<%= form.label :context, 'Dodaj wiadomosc do swojego zainteresowania adopcją', class: 'form-label'%>
+<%= form.text_area :context, class: 'form-control' %>
+</div>
+
+<div class="field" hidden>
+  <%= form.hidden_field :sender_id %>
+  <%= form.hidden_field :receiver_id %>
+  <%= form.hidden_field :dog_id %>
+</div>
+
+<%= form.submit 'Zawiadom o chęci zaadoptowania zwierzaka', class: 'btn btn-success' %>
+
+
+<% end %>

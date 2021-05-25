@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :adoption_offerts
   resources :profiles
   resources :questions
   resources :dogs
@@ -11,7 +12,13 @@ Rails.application.routes.draw do
   get '/main', to: 'hello#main'
   get '/myprofile', to:'hello#profile'
   get '/adddog', to: 'hello#adddog'
+  get '/myoffers', to: 'hello#myoffers'
+  get '/breeders', to: 'hello#breeders'
   put '/addanswer', to: 'hello#addanswer'
+  post '/addadoption', to: 'hello#addadoption'
+
+
+
   #get '/signup', to: 'users#new'
   #post '/signup', to: 'user#create'
   get '/login', to: 'sessions#new'

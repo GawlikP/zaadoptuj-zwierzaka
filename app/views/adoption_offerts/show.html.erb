@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Readed:</strong>
+  <%= @adoption_offert.readed %>
+</p>
+
+<p>
+  <strong>Context:</strong>
+  <%= @adoption_offert.context %>
+</p>
+
+<p>
+  <strong>Receiver:</strong>
+  <%= @adoption_offert.receiver_id %>
+</p>
+
+<p>
+  <strong>Sender:</strong>
+  <%= @adoption_offert.sender_id %>
+</p>
+
+<p>
+  <strong>Aproved:</strong>
+  <%= @adoption_offert.aproved %>
+</p>
+
+<p>
+  <strong>Answer:</strong>
+  <%= @adoption_offert.answer %>
+</p>
+
+<p>
+  <strong>Dog:</strong>
+  <%= @adoption_offert.dog_id %>
+</p>
+
+<%= link_to 'Edit', edit_adoption_offert_path(@adoption_offert) %> |
+<%= link_to 'Back', adoption_offerts_path %>

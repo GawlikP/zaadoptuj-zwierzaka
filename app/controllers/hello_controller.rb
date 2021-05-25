@@ -19,24 +19,62 @@ class HelloController < ApplicationController
     end
     def adddog
       @dog = Dog.new
-
-    end
-    def addanswer
-      params.each do |key, value|
-        Rails.logger.warn "Param #{key}: #{value}"
+      @dog.user_id = current_user.id
+      if session[:dog_errors]
+        @errors = session[:dog_errors]
+        session[:dog_errors] = []
       end
+    end
+
+
+    def addanswer
+
       question = Question.find(params[:id])
 
       question.answer = params[:question][:answer]
       question.hiden = false
-      Rails.logger.warn "Question #{question.answer}"
+
       if question.save
-        redirect_to dog_path(question.dog_id)
+          redirect_to dog_path(question.dog_id)
+        else
+          session[:question_errors] = question.errors
       end
+    end
+
+    def breeders
+      users = User.all
+      @breeders = []
+      users.each do |user|
+        if user.dogs.count > 0
+          @breeders.push user
+        end
+      end
+    end
+
+    def addadoption
+
+      params.each do |key, value|
+        Rails.logger.warn "Param #{key}: #{value}"
+      end
+      @adoption_offert = AdoptionOffert.new(adoption_offert_params)
+      if @adoption_offert.save
+          redirect_to dog_path(@adoption_offert.dog_id)
+        else
+          session[:adoption_errors] = @adoption_offert.errors
+      end
+    end
+
+    def myoffers
+      @adoption_offers = AdoptionOffert.where(receiver_id: current_user.id)
+
     end
 
     private
     def kick
       kick_out
+    end
+
+    def adoption_offert_params
+      params.require(:adoption_offert).permit(:readed, :context, :receiver_id, :sender_id, :aproved, :answer, :dog_id)
     end
 end

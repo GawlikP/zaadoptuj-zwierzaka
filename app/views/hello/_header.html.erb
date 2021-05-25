@@ -12,13 +12,16 @@
           <%= link_to "Mój Profil", myprofile_path, class:'nav-link active podkreslenie' %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Profiles</a>
+          <%= link_to 'Hodowcy', breeders_path, class: 'nav-link active' %>
         </li>
         <li>
         <%= link_to 'Wyloguj się', logout_path, class:'nav-link active', method: :delete, data: { confirm: 'Are you sure?' } %>
         </li>
         <li>
           <%= link_to 'Dodaj ogłoszenie', adddog_path, class: 'nav-link active' %>
+        </li>
+        <li>
+          <%= link_to 'Sprawdz oferty', myoffers_path, class: 'nav-link active' %>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

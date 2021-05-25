@@ -1,0 +1,51 @@
+<%= form_with(model: adoption_offert) do |form| %>
+  <% if adoption_offert.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(adoption_offert.errors.count, "error") %> prohibited this adoption_offert from being saved:</h2>
+
+      <ul>
+        <% adoption_offert.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :readed %>
+    <%= form.check_box :readed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :context %>
+    <%= form.text_field :context %>
+  </div>
+
+  <div class="field">
+    <%= form.label :receiver_id %>
+    <%= form.text_field :receiver_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sender_id %>
+    <%= form.text_field :sender_id %>
+  </div>
+  <div class="field">
+    <%= form.label :dog_id %>
+    <%= form.text_field :dog_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :aproved %>
+    <%= form.check_box :aproved %>
+  </div>
+
+  <div class="field">
+    <%= form.label :answer %>
+    <%= form.text_field :answer %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

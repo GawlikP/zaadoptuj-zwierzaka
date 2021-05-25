@@ -5,7 +5,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<p id="notice"><%= notice %></p>
 <div class="container-fluid" style="margin-top:30px;" >
   <div class="row">
 
@@ -150,6 +149,7 @@ table{
 
 </style>
 
+<%= render 'adoption_form',  adoption_offert: @adoption_offert %>
 
 <% @questions.each do |question, i| %>
 <% if current_user.id == @dog.user.id || question.hiden == false %>

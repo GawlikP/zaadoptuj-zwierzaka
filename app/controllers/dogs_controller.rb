@@ -11,13 +11,18 @@ class DogsController < ApplicationController
   def show
     @questions = Question.where(dog_id: params[:id])
     @question = Question.new
-    
+
     if session[:question_errors]
       @errors = session[:question_errors]
       session[:question_errors] = []
     end
     @question.dog_id = params[:id]
     @question.user_id = current_user.id
+
+    @adoption_offert = AdoptionOffert.new
+    @adoption_offert.sender_id = current_user.id
+    @adoption_offert.receiver_id = @dog.user.id
+    @adoption_offert.dog_id = @dog.id
   end
 
   # GET /dogs/new
@@ -33,15 +38,14 @@ class DogsController < ApplicationController
   def create
     @dog = Dog.new(dog_params)
 
-    respond_to do |format|
+
       if @dog.save
-        format.html { redirect_to @dog, notice: "Dog was successfully created." }
-        format.json { render :show, status: :created, location: @dog }
+        redirect_to @dog
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @dog.errors, status: :unprocessable_entity }
+        session[:dog_errors] = @dog.errors
+        redirect_to adddog_path
       end
-    end
+
   end
 
   # PATCH/PUT /dogs/1 or /dogs/1.json
