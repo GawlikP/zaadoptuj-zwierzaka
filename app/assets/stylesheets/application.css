@@ -16,3 +16,6 @@
  html,body{
    height: 100%;
  }
+ .custom-navbar{
+   background-color: #5fbae9!important ;
+ }

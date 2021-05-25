@@ -1,42 +1,65 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<style>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  .navbar-custom {
+    background-color: #2F8B57;
+    color: white;
+  }
+
+  .navbar-custom .navbar-nav .nav-link {
+    font-family: serif, 'Noto Serif';
+    color: white;
+    font-size: 17px;
+  }
+  .navbar-custom .navbar-nav .nav-link:hover {
+    color: #36486b;
+  }
+
+  .navbar-custom .navbar-brand {
+    font-size: 25px;
+    font-family: seriff, 'Noto Serif';
+    color: white;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-custom">
   <div class="container-fluid">
-    <%= link_to 'Strona główna', main_path, class:'navbar-brand' %>
+
+    <p class="fas fa-bone" style="font-size: 40px; margin-right:10px;"></p>
+
+    <p class="navbar-brand">Zaadoptuj zwierzaka</p>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li>
+          <b>
+            <%= link_to 'Strona główna', main_path, class:'nav-link active' %></b>
+        </li>
 
-          <%= link_to "Mój Profil", myprofile_path, class:'nav-link active podkreslenie' %>
+        <li>
+          <%= link_to 'Dodaj ogłoszenie', adddog_path, class: 'nav-link active' %>
         </li>
         <li class="nav-item">
           <%= link_to 'Hodowcy', breeders_path, class: 'nav-link active' %>
         </li>
         <li>
-        <%= link_to 'Wyloguj się', logout_path, class:'nav-link active', method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Sprawdź oferty', myoffers_path, class: 'nav-link active' %>
         </li>
-        <li>
-          <%= link_to 'Dodaj ogłoszenie', adddog_path, class: 'nav-link active' %>
-        </li>
-        <li>
-          <%= link_to 'Sprawdz oferty', myoffers_path, class: 'nav-link active' %>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      <%= kick_out %>
+        <%= kick_out %>
       </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
 
+          <%= link_to "Mój Profil", myprofile_path, class:'nav-link active podkreslenie' %>
+        </li>
+        <li>
+          <b>
+            <%= link_to 'Wyloguj się', logout_path, class:'nav-link active', method: :delete, data: { confirm: 'Are you sure?' } %>
+          </b>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

@@ -1,60 +1,152 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap" rel="stylesheet">
 <% provide(:title, 'Sign up') %>
-<%= render 'header'%>
-<div class="container-fluid" style="padding:0; margin:0;">
+  <%= render 'header'%>
+  <div class="container-fluid" style="padding:0; margin:0;">
 
+    <div class="row">
 
-
-
-<div class="row">
-
-<div class="col-3">
-  <h1> HELLO <%= current_user.name %> </h1>
-</div>
-
-<div class="col-9">
-  <% t = 0 %>
-  <div class="card-group">
-<% @dogs.each do |dog, i| %>
-
-
-
-    <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title"><%= dog.name %></h5>
-        <p class="card-text">Owner: <%= @users[t] %> | Gender: <% if dog.gender %> male <% else %> female <% end %> | Breed: <%= dog.breed %> </p>
-        <p class="card-text"><small class="text-muted"><%= humanize (Time.now - dog.birth_date)%></small></p>
-        <p><%= link_to 'SHOW', dog, class: "btn btn-success" %> </p>
+      <div class="col-2">
+        <br>
+        <br>
+        <center>
+          <h1>
+            <b>Witaj
+              <%= current_user.name %>
+            </b>
+          </h1>
+        </center>
       </div>
-    </div>
-    <% t+=1 %>
-      <% if t == 3 %>
-          </div><div class="card-group">
-            <% t = 0 %>
-      <% end %>
 
-      <% end %>
-      <% if t != 3 %>
-        <% j = 3 - t %>
-        <% (1..j).each  do |n| %>
-          <div class="card"></div>
-        <% end %>
-      <% end %>
-  </div>
+      <div class="col-9 .col-md-10 .col-sm-10">
+        <img src="http://dslv9ilpbe7p1.cloudfront.net/GAjH6aSIWIHLnPKFRh7mFQ_store_banner_image.jpeg" alt="zdjecie_psów" class="img-fluid">
+        <br>
+        <br>
+        <% t = 0 %>
 
+          <div class="card-deck">
+            <% @dogs.each do |dog, i| %>
 
-</div>
+              <div class="card img_wrapper">
+                <img class="card-img-top" src="https://psiakrew.sklep.pl/pol_pl_Szelki-dla-Psa-Bat-Dog-bez-uciskowe-Wygodne-Ultramiekkie-Psiakrew-1152694709_5.jpg" alt="Zdjęcie profilowe psa">
+                <div class="card-body">
+                  <center>
+                    <h1 class="card-title"><%= dog.name %></h1>
+                  </center>
+                  <center>
+                    <p class="card-text">
+                      <b>Właściciel:</b>
+                      <%= @users[t] %>
+                      |
+                      <b>
+                        Płeć:</b>
+                      <% if dog.gender %>
+                        On
+                      <% else %>
+                        Ona
+                      <% end %>
+                      |
+                      <b>
+                        Rasa:</b>
+                      <%= dog.breed %>
+                    </p>
+                  </center>
+                  <p class="card-text">
+                    <center>
+                      <small class="text-muted">Wiek:
+                        <%= humanize (Time.now - dog.birth_date)%></small>
+                    </center>
+                  </p>
 
-<div class="col-3">
-    <h1> HELLO WORLD </h1>
-</div>
+                  <span style="color:white;"><%= link_to 'Pokaż profil', dog, class: 'btn' %></span>
 
-</div>
+                </div>
 
-</div>
+              </div>
+              <% t+=1 %>
+                <% if t == 3 %>
+                </div>
+                <div class="card-deck">
+                  <% t = 0 %><% end %>
 
+                <% end %>
+                <% if t != 3 %>
+                  <% j = 3 - t %>
+                    <% (1..j).each  do |n| %>
+                      <div class="card"></div>
+                    <% end %>
+                  <% end %>
+                </div>
 
-  <style>
+              </div>
 
+              <div class="col-3">
+                <h1>
+                  HELLO WORLD
+                </h1>
 
-  </style>
+              </div>
+
+            </div>
+
+          </div>
+
+          <style>
+            h1 {
+              font-family: 'Caveat', cursive;
+
+            }
+
+            .card {
+              border-radius: 10%;
+            }
+            .card-img-top {
+              border-radius: 10%;
+            }
+
+            .card {
+              background-color: #f0f0f0;
+            }
+
+            .btn {
+              border-radius: 5%;
+            }
+            .img_wrapper img {
+              width: 100%;
+            }
+            .img_wrapper:hover img {
+              -webkit-filter: blur(1.7px);
+            }
+            .img_wrapper span {
+              display: none;
+              position: absolute;
+              top: 20%;
+              transform: translateY(-50%);
+
+              left: 50%;
+              transform: translateX(-50%);
+            }
+            .img_wrapper:hover span {
+              display: table-cell;
+            }
+
+            .btn {
+              color: #ffff;
+
+              text-decoration: none;
+              background: #5b2c6f;
+              padding: 30px;
+              border-radius: 10px;
+              display: inline-block;
+              border: none;
+              transition: all 0.4s ease 0s;
+            }
+            .btn:hover {
+              background: #434343;
+              letter-spacing: 1px;
+              -webkit-box-shadow: 0 5px 40px -10px rgba(0,0,0,0.57);
+              -moz-box-shadow: 0 5px 40px -10px rgba(0,0,0,0.57);
+              box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+              transition: all 0.4s ease 0s;
+            }
+          </style>

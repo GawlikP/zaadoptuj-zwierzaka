@@ -1,139 +1,150 @@
 <%= form_with(model: dog) do |form| %>
-  <% if errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(errors.count, "error") %> prohibited this dog from being saved:</h2>
+<% if errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(errors.count, "error") %>
+      prohibited this dog from being saved:</h2>
 
-      <ul>
-        <% errors.each do |error| %>
-          <li><%= error %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <ul>
+      <% errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
   </div>
+<% end %>
+<br>
+<br>
+<div class="field">
+  <%= form.label :Nazwa_pupila %>
+  <%= form.text_field :name %>
+</div>
+<br>
 
-  <div class="field">
-    <%= form.label :birth_date %>
-    <%= form.datetime_select :birth_date %>
-  </div>
+<div class="field">
+  <%= form.label :Data_urodzenia %>
+  <%= form.datetime_select :birth_date %>
+</div>
+<br>
+<div class="field">
+  <%= form.label :Rasa %>
+  <%= form.text_field :breed %>
+</div>
+<br>
+<div class="field">
+  <%= form.label :Opis%>
+  <%= form.text_area :description %>
+</div>
+<br>
+<div class="form-group ">
 
-  <div class="field">
-    <%= form.label :breed %>
-    <%= form.text_field :breed %>
-  </div>
+  <%= form.label :Płeć %>
+  <%= form.select :gender, options_for_select([['SAMIEC', '1'], ['SAMICA', '0']]), {:selected => form.object.gender}, {class: 'form-control'} %>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+</div>
 
-  <div class="form-group ">
+<div class="form-group">
+  <%= form.label :Szczepei%>
+  <%= form.select :vaccination, options_for_select([['Brak Wymaganych szczepien', '1'],['Wymagane szczepienia', '2'], ['Wymagane szczepienia i dodatkowe', '3']] ), {:vaccination => form.object.vaccination}, {class: 'form-control'} %>
+</div>
 
-    <%= form.label :gender %>
-    <%= form.select :gender,  options_for_select([['SAMIEC', '1'], ['SAMICA', '0']]), {:selected => form.object.gender}, {class: 'form-control'}  %>
+<div class="form-group">
+  <%= form.label :Wielkość %>
+  <%= form.select :size, options_for_select([['Maly', '1'], ['Nizej sredni', '2'], ['Sredni', '3'], ['Duzy', '4'], ['Ogromny', '5']]), {:size => form.object.size}, {class: 'form-control'} %>
 
-  </div>
+</div>
 
-  <div class="form-group">
-    <%= form.label :vaccination %>
-    <%= form.select :vaccination, options_for_select([['Brak Wymaganych szczepien', '1'],['Wymagane szczepienia', '2'], ['Wymagane szczepienia i dodatkowe', '3']] ), {:vaccination => form.object.vaccination}, {class: 'form-control'} %>
-  </div>
+<div class="form-group">
+  <%= form.label :Waga, class:'form-label' %>
+  <%= form.text_field :weight , class: 'form-control' %>
+</div>
 
-  <div class="form-group">
-    <%= form.label :size %>
-    <%= form.select :size, options_for_select([['Maly', '1'], ['Nizej sredni', '2'], ['Sredni', '3'], ['Duzy', '4'], ['Ogromny', '5']]), {:size => form.object.size}, {class: 'form-control'} %>
+<div class="form-group">
+  <%= form.label :Wzrost, class:'form-label' %>
+  <%= form.text_field :height , class: 'form-control'%>
+</div>
 
-  </div>
+<div class="field">
+  <%= form.label :Potrzebna_wielkość_mieszkania %>
+  <%= form.select :apartment_size, options_for_select([['Jakikolwiek dach nad głową', '1'], ['Małe mieszkanie', '2'], ['Duże mieszkanie', '3'], ['Mieszkanie z ogrodem', '4'], ['Duża połać terenu', '5']]), {:apartment_size => form.object.apartment_size
+  },{class: 'form-control'}%>
+</div>
+<br>
+<div class="field">
+  <%= form.label :Stosunek_do_dzieci %>
+  <%= form.select :childrens, options_for_select([['Pies kocha dzieci, nigdy nie miał z nimi problemu', '1'] ,['Pies kocha dzieci, jednak powinno się nadzorować kontakty','2'], ['Tylko nadzorowane kontakty', '3'], ['Należy uważnie obserwować i pilnować
+  psa jak i dziecko', '4'] , ['Nie powinien przebywać z dziećmi', '5']]), {:childrens => form.object.childrens },{class: 'form-control'}%>
+</div>
+<br>
+<div class="field">
+  <%= form.label :Zapotrzebowanie_na_czas %>
+  <%= form.select :time_to_spent, options_for_select([['Pies potrafi przebywać samemu, nie potrzebuje stałego kontaktu', '1'], ['Pies potrafi zostać sam do 9-10 godzin', '2'], ['Pies powinien bez problemu radzić sobie samemu do 4-5 godzin', '3'],
+  ['Pies źle znosi rozłąkę', '4'], ['Pies traumatycznie reaguje na pozostawienie go samemu', '5']]), {:time_to_spent => form.object.time_to_spent },{class: 'form-control'}%>
 
-  <div class="form-group">
-    <%= form.label :weight, class:'form-label' %>
-    <%= form.text_field :weight , class: 'form-control' %>
-  </div>
+</div>
+<br>
+<div class="field">
+  <%= form.label :Wymagane_obycie_właściciela_z_psami %>
+  <%= form.select :owner_with_dogs, options_for_select([['Właściciel nie miewa kontaku z psami', '1'], ['Właściciel ma stałe kontakty z psami', '2'], ['W rodzinie kiedyś był pies', '3'], ['Posiadał psa w przeszłości', '4'], ['Właściciel ma/miał wiele
+  psów i ma dobre z nimi doświadczenie', '5']]), {:owner_with_dogs => form.object.owner_with_dogs}, {class: 'form-control'} %>
 
-  <div class="form-group">
-    <%= form.label :height, class:'form-label' %>
-    <%= form.text_field :height , class: 'form-control'%>
-  </div>
+</div>
+<br>
+<div class="field">
+  <%= form.label :Stosunek_do_innych_zwierząt %>
+  <%= form.select :animals, options_for_select([['Pies bardzo dobrze czuje się przy innych zwierzętach i dobrze się zachowuje', '1'], ['Pies dobzre czuje się przy innych zwierzętach, jednakże zdarzy mu się pogonić np. kota', '2'], ['Pies nie powinien
+  być pozostawiony bez nadzoru przy innych zwierzętach', '3'], ['Pies ma tendencje do atakowania innych zwierząt', '4'], ['Pies ma tendencje do atakowanie nawet innych psów', '5']]),{ :animals => form.object.animals },{class: 'form-control'}%>
 
-  <div class="field">
-    <%= form.label :apartment_size %>
-    <%= form.select :apartment_size, options_for_select([['Jakikolwiek dach nad głową', '1'], ['Małe mieszkanie', '2'], ['Duże mieszkanie', '3'], ['Mieszkanie z ogrodem', '4'], ['Duża połać terenu', '5']]), {:apartment_size => form.object.apartment_size },{class: 'form-control'}%>
-  </div>
+</div>
+<br>
+<div class="field">
+  <%= form.label :Głośnośc %>
+  <%= form.select :noise, options_for_select([['Pies jest cichy, bardzo rzadko szczeka', '1'], ['Psu zdarzy się szczekać w typowych dla tego sytuacjach', '2'], ['Pies często szczeka', '3'], ['Pies szczeka głośno', '4'], ['Pies szczeka bardzo głośno i
+  bardzo często', '5']]),{ :noise => form.object.noise}, {class: 'form-control'} %>
 
-  <div class="field">
-    <%= form.label :childrens %>
-    <%= form.select :childrens, options_for_select([['Pies kocha dzieci, nigdy nie miał z nimi problemu', '1'] ,['Pies kocha dzieci, jednak powinno się nadzorować kontakty','2'], ['Tylko nadzorowane kontakty', '3'], ['Należy uważnie obserwować i pilnować psa jak i dziecko', '4'] , ['Nie powinien przebywać z dziećmi', '5']]), {:childrens => form.object.childrens },{class: 'form-control'}%>
-  </div>
+</div>
+<br>
+<div class="field">
+  <%= form.label :Energiczność_psa %>
+  <%= form.select :energy, options_for_select([['Pies całymi dniami leży i raczej nie potrzebuje wiele ruchu', '1'], ['Pies jest spokojny, ale należy zabrać go na spacer 2-3 razy dziennie', '2'], ['Pies lubi spacery i zabawy na świeżym powietrzu.',
+  '3'], ['Pies jest pełen energii, należy zabierać go na długie spacery.', '4'], ['Pies wymaga długich spacerów codziennie, ciężko go zmęczyć.', '5']]), {:energy => form.object.energy},{class: 'form-control'} %>
 
-  <div class="field">
-    <%= form.label :time_to_spent %>
-    <%= form.select :time_to_spent, options_for_select([['Pies potrafi przebywać samemu, nie potrzebuje stałego kontaktu', '1'], ['Pies potrafi zostać sam do 9-10 godzin', '2'], ['Pies powinien bez problemu radzić sobie samemu do 4-5 godzin', '3'], ['Pies źle znosi rozłąkę', '4'], ['Pies traumatycznie reaguje na pozostawienie go samemu', '5']]), {:time_to_spent => form.object.time_to_spent },{class: 'form-control'}%>
+</div>
+<br>
+<div class="field">
+  <%= form.label :Usposobienie_psa %>
+  <%= form.select :disposition, options_for_select([['Pies jest spokojny, łagodny, brak mu usposobienia obronnego', '1'], ['Pies jest spokojny i łagodny, jednak reaguje na zagrażające sytuacje', '2'], ['Pies jest spokojny, ma obronne usposobienie. Z
+  chęcią obszczeka każdego intruza.', '3'], ['Pies jest spokojny, jednak posiada obronne usposobienie', '4'], ['Pies bywa agresywny wobec obcych, jest nieufny', '5']]),{ :disposition => form.object.disposition },{class: 'form-control'}%>
 
-  </div>
+</div>
+<br>
+<div class="field">
+  <%= form.label :Lokalizacja %>
+  <%= form.text_area :localization %>
+</div>
+<br>
+<div class="field">
+  <%= form.label :Sierść %>
+  <%= form.select :coat, options_for_select([['Krótka sierść', '1'], ['Sierść średniej długości', '2'], ['Długa sierść', '3'], ['Długa podwójna sierść', '4']]), {:coat => form.object.coat}, {class: 'form-control'} %>
 
-  <div class="field">
-    <%= form.label :owner_with_dogs %>
-    <%= form.select :owner_with_dogs, options_for_select([['Właściciel nie miewa kontaku z psami', '1'], ['Właściciel ma stałe kontakty z psami', '2'], ['W rodzinie kiedyś był pies', '3'], ['Posiadał psa w przeszłości', '4'], ['Właściciel ma/miał wiele psów i ma dobre z nimi doświadczenie', '5']]), {:owner_with_dogs => form.object.owner_with_dogs}, {class: 'form-control'} %>
+</div>
+<br>
+<div class="field">
+  <%= form.label :Ślinienie_psa %>
+  <%= form.select :drooling, options_for_select([['Pies prawie się nie ślini', '1'],['Pies czasami się slini','2'],['Pies trochę się ślini','3'],['Pies ślini się przez większość czasu','4'],['Pies ma ślinotok ','5']]), {:drooling =>
+  form.object.drooling}, {class: 'form-control'} %>
+</div>
+<br>
+<div class="field">
+  <%= form.label :obedience %>
+  <%= form.select :obedience, options_for_select([['Pies zna wszystkie podstawowe komendy wraz ze sztuczkami', '1'], ['Pies zna wszystkie podstawowe komendy i wykonuje bez problemu', '2'], ['Pies zna wszystkie podstawowe komendy', '3'], ['Pies bywa
+  uparty, jednak reaguje na najważniejsze komendy', '4'], ['Pies nie reaguje na komendy, potrafi jednak chodzić na smyczy.' , '5'], ['Pies nie potrafi nawet chodzić na smyczy', '6']]), {:obedience => form.object.obedience}, {class: 'form-control'} %>
 
-  </div>
+</div>
 
-  <div class="field">
-    <%= form.label :animals %>
-    <%= form.select :animals, options_for_select([['Pies bardzo dobrze czuje się przy innych zwierzętach i dobrze się zachowuje', '1'], ['Pies dobzre czuje się przy innych zwierzętach, jednakże zdarzy mu się pogonić np. kota', '2'], ['Pies nie powinien być pozostawiony bez nadzoru przy innych zwierzętach', '3'], ['Pies ma tendencje do atakowania innych zwierząt', '4'], ['Pies ma tendencje do atakowanie nawet innych psów', '5']]),{ :animals => form.object.animals },{class: 'form-control'}%>
-
-  </div>
-
-  <div class="field">
-    <%= form.label :noise %>
-    <%= form.select :noise, options_for_select([['Pies jest cichy, bardzo rzadko szczeka', '1'], ['Psu zdarzy się szczekać w typowych dla tego sytuacjach', '2'], ['Pies często szczeka', '3'], ['Pies szczeka głośno', '4'], ['Pies szczeka bardzo głośno i bardzo często', '5']]),{ :noise => form.object.noise}, {class: 'form-control'} %>
-
-  </div>
-
-  <div class="field">
-    <%= form.label :energy %>
-    <%= form.select :energy, options_for_select([['Pies całymi dniami leży i raczej nie potrzebuje wiele ruchu', '1'], ['Pies jest spokojny, ale należy zabrać go na spacer 2-3 razy dziennie', '2'], ['Pies lubi spacery i zabawy na świeżym powietrzu.', '3'], ['Pies jest pełen energii, należy zabierać go na długie spacery.', '4'], ['Pies wymaga długich spacerów codziennie, ciężko go zmęczyć.', '5']]), {:energy => form.object.energy},{class: 'form-control'} %>
-
-  </div>
-
-  <div class="field">
-    <%= form.label :disposition %>
-    <%= form.select :disposition, options_for_select([['Pies jest spokojny, łagodny, brak mu usposobienia obronnego', '1'], ['Pies jest spokojny i łagodny, jednak reaguje na zagrażające sytuacje', '2'], ['Pies jest spokojny, ma obronne usposobienie. Z chęcią obszczeka każdego intruza.', '3'], ['Pies jest spokojny, jednak posiada obronne usposobienie', '4'], ['Pies bywa agresywny wobec obcych, jest nieufny', '5']]),{ :disposition => form.object.disposition },{class: 'form-control'}%>
-
-  </div>
-
-  <div class="field">
-    <%= form.label :localization %>
-    <%= form.text_area :localization %>
-  </div>
-
-  <div class="field">
-    <%= form.label :coat %>
-    <%= form.select :coat, options_for_select([['Krótka sierść', '1'], ['Sierść średniej długości', '2'], ['Długa sierść', '3'], ['Długa podwójna sierść', '4']]), {:coat => form.object.coat}, {class: 'form-control'}   %>
-
-
-
-  </div>
-
-  <div class="field">
-    <%= form.label :drooling %>
-    <%= form.select :drooling, options_for_select([['Pies prawie się nie ślini', '1'],['Pies czasami się slini','2'],['Pies trochę się ślini','3'],['Pies ślini się przez większość czasu','4'],['Pies ma ślinotok ','5']]), {:drooling => form.object.drooling}, {class: 'form-control'} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :obedience %>
-    <%= form.select :obedience, options_for_select([['Pies zna wszystkie podstawowe komendy wraz ze sztuczkami', '1'], ['Pies zna wszystkie podstawowe komendy i wykonuje bez problemu', '2'], ['Pies zna wszystkie podstawowe komendy', '3'], ['Pies bywa uparty, jednak reaguje na najważniejsze komendy', '4'], ['Pies nie reaguje na komendy, potrafi jednak chodzić na smyczy.' , '5'], ['Pies nie potrafi nawet chodzić na smyczy', '6']]), {:obedience => form.object.obedience}, {class: 'form-controls'} %>
-
-  </div>
-
-  <div class="field" hidden>
-    <%= form.hidden_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<div class="field" hidden="hidden">
+  <%= form.hidden_field :user_id %>
+</div>
+<br>
+<div class="actions">
+  <%= form.submit%>
+</div>
 <% end %>

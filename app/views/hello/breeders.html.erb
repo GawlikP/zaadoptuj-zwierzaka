@@ -1,10 +1,29 @@
 <%= render 'header' %>
 
 <div class="container-fluid">
-  <h1> Hodowcy </h1>
+  <br>
+  <br>
+  <h1>
+    Hodowcy
+  </h1>
   <% @breeders.each do |breeder| %>
-      <p> <%= breeder.name %>  </p>
-      <p> Wystawione psy: <%= breeder.dogs.count %> </p>
-      <p> Przejdz do profilu: <%= link_to 'Zobacz profil', profile_path(breeder.profiles.first)  ,class: 'btn btn-primary' %> </p>
+    <p>
+      <b>Nazwa:</b>
+      <%= breeder.name %>
+    </p>
+    <p>
+      <b>Wystawione psy łącznie:</b>
+      <%= breeder.dogs.count %>
+    </p>
+    <p>
+      <b>Przejdz do profilu:</b>
+      <%= link_to 'Zobacz profil', profile_path(breeder.profiles.first) ,class: 'btn btn-primary' %>
+    </p>
   <% end %>
-  </div>
+</div>
+<style>
+  h1 {
+    font-family: 'Caveat', cursive;
+
+  }
+</style>
