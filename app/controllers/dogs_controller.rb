@@ -23,6 +23,8 @@ class DogsController < ApplicationController
     @adoption_offert.sender_id = current_user.id
     @adoption_offert.receiver_id = @dog.user.id
     @adoption_offert.dog_id = @dog.id
+
+    @is_offert_send = AdoptionOffert.where(sender_id: current_user.id, dog_id: @dog).empty?
   end
 
   # GET /dogs/new

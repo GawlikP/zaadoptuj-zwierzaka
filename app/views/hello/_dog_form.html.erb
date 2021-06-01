@@ -14,29 +14,29 @@
 <br>
 <br>
 <div class="field">
-  <%= form.label :Nazwa_pupila %>
-  <%= form.text_field :name %>
+  <%= form.label :name, 'Imie pupila', class: 'form-label' %>
+  <%= form.text_field :name, class: 'form-control' %>
 </div>
 <br>
 
 <div class="field">
-  <%= form.label :Data_urodzenia %>
-  <%= form.datetime_select :birth_date %>
+  <%= form.label :birth_date, 'Rok urodzenia', class: 'form-label' %>
+  <%= form.datetime_select :birth_date, class: 'form-control' %>
 </div>
 <br>
 <div class="field">
-  <%= form.label :Rasa %>
-  <%= form.text_field :breed %>
+  <%= form.label :breed, 'Rasa', class: 'form-label' %>
+  <%= form.text_field :breed, class: 'form-control' %>
 </div>
 <br>
 <div class="field">
-  <%= form.label :Opis%>
-  <%= form.text_area :description %>
+  <%= form.label :description, 'Opis', class: 'form-label' %>
+  <%= form.text_area :description, class: 'form-control' %>
 </div>
 <br>
 <div class="form-group ">
 
-  <%= form.label :Płeć %>
+  <%= form.label :gender, 'Płeć' %>
   <%= form.select :gender, options_for_select([['SAMIEC', '1'], ['SAMICA', '0']]), {:selected => form.object.gender}, {class: 'form-control'} %>
 
 </div>
@@ -110,25 +110,25 @@
 </div>
 <br>
 <div class="field">
-  <%= form.label :Usposobienie_psa %>
+  <%= form.label :disposition, 'Usposobienie psa', class: 'form-label' %>
   <%= form.select :disposition, options_for_select([['Pies jest spokojny, łagodny, brak mu usposobienia obronnego', '1'], ['Pies jest spokojny i łagodny, jednak reaguje na zagrażające sytuacje', '2'], ['Pies jest spokojny, ma obronne usposobienie. Z
   chęcią obszczeka każdego intruza.', '3'], ['Pies jest spokojny, jednak posiada obronne usposobienie', '4'], ['Pies bywa agresywny wobec obcych, jest nieufny', '5']]),{ :disposition => form.object.disposition },{class: 'form-control'}%>
 
 </div>
 <br>
 <div class="field">
-  <%= form.label :Lokalizacja %>
-  <%= form.text_area :localization %>
+  <%= form.label :localization, 'Lokalizacja', class: 'form-label' %>
+  <%= form.text_area :localization, class: 'form-control' %>
 </div>
 <br>
 <div class="field">
-  <%= form.label :Sierść %>
+  <%= form.label :coat ,'Sierść' %>
   <%= form.select :coat, options_for_select([['Krótka sierść', '1'], ['Sierść średniej długości', '2'], ['Długa sierść', '3'], ['Długa podwójna sierść', '4']]), {:coat => form.object.coat}, {class: 'form-control'} %>
 
 </div>
 <br>
 <div class="field">
-  <%= form.label :Ślinienie_psa %>
+  <%= form.label :drooling, 'Ślinienie', class: 'form-label' %>
   <%= form.select :drooling, options_for_select([['Pies prawie się nie ślini', '1'],['Pies czasami się slini','2'],['Pies trochę się ślini','3'],['Pies ślini się przez większość czasu','4'],['Pies ma ślinotok ','5']]), {:drooling =>
   form.object.drooling}, {class: 'form-control'} %>
 </div>
@@ -145,6 +145,6 @@
 </div>
 <br>
 <div class="actions">
-  <%= form.submit%>
+  <%= form.submit 'DODAJ OGŁOSZENIE', class: 'btn btn-success'%>
 </div>
 <% end %>

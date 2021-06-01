@@ -2,44 +2,45 @@
 <p id="notice"><%= notice %></p>
 
 
-<p>
-  <strong>User:</strong>
-  <%= @profile.user_id %>
-</p>
 
-<p>
-  <strong>Apartment:</strong>
-  <%= @profile.apartment %>
-</p>
+        <% if @profile %>
 
-<p>
-  <strong>Garden:</strong>
-  <%= @profile.garden %>
-</p>
+        <p>
+          <strong><i class="fas fa-home"></i> Mieszkanie:</strong>
+          <%= humanize_apartment_size @profile.apartment %>
+        </p>
 
-<p>
-  <strong>Age:</strong>
-  <%= @profile.age %>
-</p>
+        <p>
+          <strong><i class="fas fa-seedling"></i> Ogród:</strong>
+          <%= @profile.garden %>
+        </p>
 
-<p>
-  <strong>Animal experience:</strong>
-  <%= @profile.animal_experience %>
-</p>
+        <p>
+          <strong><i class="far fa-calendar-alt"></i> Wiek:</strong>
+          <%= @profile.age %> Lat
+        </p>
 
-<p>
-  <strong>Time to spent:</strong>
-  <%= @profile.time_to_spent %>
-</p>
+        <p>
+          <strong><i class="fas fa-dog"></i> Doświadczenie z zwierzętami:</strong>
+          <%= humanize_owner_with_dogs @profile.animal_experience %>
+        </p>
 
-<p>
-  <strong>Finance:</strong>
-  <%= @profile.finance %>
-</p>
+        <p>
+          <strong><i class="fas fa-clock"></i> Time to spent:</strong>
+          <%= humanize_time_to_spent @profile.time_to_spent %>
+        </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @profile.description %>
-</p>
+        <strong><i class="fas fa-money-bill"></i>F undusze:</strong>
+        <p>
+          <%= @profile.finance %>
+        </p>
 
+        <p>
+          <strong>Opis:</strong>
+          <%= @profile.description %>
+        </p>
+        <% else %>
+          <p> Nie utworzono profilu</p>
+        <% end %>
+      </div>
 <%= link_to 'Back', breeders_path %>

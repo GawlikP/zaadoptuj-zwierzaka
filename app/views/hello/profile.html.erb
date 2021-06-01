@@ -25,12 +25,12 @@
 
         <p>
           <strong><i class="fas fa-dog"></i> Doświadczenie z zwierzętami:</strong>
-          <%= @profile.animal_experience %>
+          <%= humanize_owner_with_dogs @profile.animal_experience %>
         </p>
 
         <p>
           <strong><i class="fas fa-clock"></i> Time to spent:</strong>
-          <%= @profile.time_to_spent %>
+          <%= humanize_time_to_spent @profile.time_to_spent %>
         </p>
 
         <strong><i class="fas fa-money-bill"></i>F undusze:</strong>

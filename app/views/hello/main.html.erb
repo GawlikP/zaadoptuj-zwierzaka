@@ -26,7 +26,15 @@
 
           <div class="card-deck">
             <% @dogs.each do |dog, i| %>
-
+              <% adopted = false %>
+              <% @offerts.each do |offer| %>
+                  <% if offer.aproved %>
+                    <% if offer.dog_id == dog.id %>
+                      <% adopted = true %>
+                    <% end  %>
+                  <% end %>
+              <% end %>
+            <% if not adopted %>
               <div class="card img_wrapper">
                 <img class="card-img-top" src="https://psiakrew.sklep.pl/pol_pl_Szelki-dla-Psa-Bat-Dog-bez-uciskowe-Wygodne-Ultramiekkie-Psiakrew-1152694709_5.jpg" alt="Zdjęcie profilowe psa">
                 <div class="card-body">
@@ -63,7 +71,9 @@
                 </div>
 
               </div>
+
               <% t+=1 %>
+              <% end %>
                 <% if t == 3 %>
                 </div>
                 <div class="card-deck">

@@ -1,15 +1,34 @@
 <%= render 'header' %>
 
 <div class="container-fluid">
-<h1> Offers </h1>
+<h1> Offerty dla moich zwierzakow </h1>
 
 <% @adoption_offers.each do |offer| %>
 <div class="card">
 <div class="card-title"><h3> Od: <%= offer.sender.name %> </h3> </div>
 <div class="card-text"><p> Treść:  <%= offer.context %> </p> </div>
 <div class="card-text"><p> Dotyczy psa: <%= link_to offer.dog.name ,dog_path(offer.dog), class: 'btn btn-primary' %> </p> </div>
-<div class="card-text"> <button class="btn btn-success" > Wyślij odpowiedź </button></div>
+<div class="card-text">
+<% if not offer.aproved %>
+  <%= form_for offer, url: acceptoffer_path(offer), method: :post, html: {class: "form-group"} do |form| %>
+    <%= form.hidden_field :dog_id %>
+    <%= form.hidden_field :sender_id %>
+    <%= form.submit 'Zaakceptuj oferte', class: 'btn btn-success' %>
+  <% end %>
+<% else %>
+  <p class="alert alert-success"> ZATWIERDZONO <i class="fas fa-check-circle"style="color:green;"></i> </p>
+<% end %>
+</div>
 </div>
 <% end %>
-
+<br>
+<h1> Moje oferty </h1>
+<% @my_offerts.each do |offer| %>
+<div class="card">
+<div class="card-title"><h3> Do: <%= offer.receiver.name %> </h3> </div>
+<div class="card-text"><p> Treść:  <%= offer.context %> </p> </div>
+<div class="card-text"><p> Dotyczy psa: <%= link_to offer.dog.name ,dog_path(offer.dog), class: 'btn btn-primary' %> </p> </div>
+<div class="card-text"><p> Czy zostało pozytywnie rozpatrzone?: <% if offer.aproved %> <i class="fas fa-check-circle"style="color:green;"></i> <% else %> <i class="fas fa-times-circle" style="color: red;"></i> <% end %></p> </div>
+</div>
+<% end %>
 </div>

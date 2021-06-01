@@ -7,7 +7,6 @@ class Dog < ApplicationRecord
   validates :name, presence: true
   validates :birth_date, presence: true
   validates :description, presence: true
-  validates :gender, presence: true
   validates :vaccination, presence: true
   validates :size, presence: true
   validates :weight, presence: true
@@ -24,6 +23,6 @@ class Dog < ApplicationRecord
   validates :coat, presence: true
   validates :drooling, presence: true
   validates :obedience, presence: true
-   
+
 
 end

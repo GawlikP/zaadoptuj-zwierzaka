@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/breeders', to: 'hello#breeders'
   put '/addanswer', to: 'hello#addanswer'
   post '/addadoption', to: 'hello#addadoption'
-
+  post '/acceptoffer', to: 'hello#accept_offer'
 
 
   #get '/signup', to: 'users#new'

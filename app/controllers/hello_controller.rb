@@ -11,6 +11,7 @@ class HelloController < ApplicationController
         user = User.find_by(id: dog.user_id)
         @users.push(user.name)
       }
+      @offerts = AdoptionOffert.all 
     end
     def profile
       @user = current_user
@@ -53,9 +54,6 @@ class HelloController < ApplicationController
 
     def addadoption
 
-      params.each do |key, value|
-        Rails.logger.warn "Param #{key}: #{value}"
-      end
       @adoption_offert = AdoptionOffert.new(adoption_offert_params)
       if @adoption_offert.save
           redirect_to dog_path(@adoption_offert.dog_id)
@@ -66,7 +64,19 @@ class HelloController < ApplicationController
 
     def myoffers
       @adoption_offers = AdoptionOffert.where(receiver_id: current_user.id)
+      @my_offerts = AdoptionOffert.where(sender_id: current_user.id)
+    end
 
+    def accept_offer
+
+      @adoption_offert = AdoptionOffert.where(dog_id: params[:adoption_offert][:dog_id], receiver_id: current_user.id, sender_id: params[:adoption_offert][:sender_id]).update_all aproved: true
+      if @adoption_offert > 0
+        redirect_to myoffers_path
+      else
+        @adoption_offert.errors.each do |key, value|
+          Rails.logger.warn "Param #{key}: #{value}"
+        end
+      end
     end
 
     private

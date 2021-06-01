@@ -226,7 +226,11 @@
                 -moz-border-radius: 5px;
               }
             </style>
+  <% if not @dog.user_id == current_user.id %>
+            <% if  @is_offert_send %>
             <%= render 'adoption_form', adoption_offert: @adoption_offert %>
+            <% end %>
+ <% end %>
             <% @questions.each do |question, i| %>
               <% if current_user.id == @dog.user.id || question.hiden == false %>
                 <div class="card">
@@ -246,15 +250,16 @@
                   </div>
                   <br>
                 </div>
-                <%
-              if current_user.id == @dog.user.id %>
+                <% if current_user.id == @dog.user.id %>
                   <%= render 'hello/form_answer', question: question, id: question.id %>
                 <%end %>
               <% end %>
             <% end %>
+      <% if not @dog.user_id == current_user.id %>
             <%= render 'question_form', question: @question, d_id: @dog.id, u_id: current_user.id %>
+      <% end %>
             <%= link_to 'Edit', edit_dog_path(@dog) %>
-            |
+
             <%= link_to 'Back', dogs_path %>
 
             <style>
