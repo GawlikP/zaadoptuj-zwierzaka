@@ -1,24 +1,3 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Application on with you can offer your annimals to adopt. Its focused over awearnes owners that knows how important it its to know specifics of your dog. Its all written in Ruby on Rails, uses PostgreSQL as Database and Bootstrap as frontend framework. 
